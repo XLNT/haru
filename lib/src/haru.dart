@@ -10,7 +10,8 @@ SpringSimulation _spring(double stiffness, double damping, [double velocity = 0]
 
 class Haru {
   /// Builds a [SpringSimulation] using the default [SpringDescription]
-  static SpringSimulation spring(double stiffness, double damping) => _spring(stiffness, damping);
+  static SpringSimulation spring(double stiffness, double damping, [double velocity = 0]) =>
+      _spring(stiffness, damping, velocity);
 
   // NB(shrugs) values from https://www.react-spring.io/docs/hooks/api
   // NB(shrugs) using `normal` because `default` is a reserved word.
@@ -33,5 +34,5 @@ class Haru {
   // NB(shrugs) this is technically incorrect because molasses can be incredibly fast if you give it the chance.
   // See https://en.wikipedia.org/wiki/Great_Molasses_Flood for details
   /// A spring as slow as molasses.
-  static final molasses = _spring(280, 120);
+  static SpringSimulation molasses([double velocity = 0]) => _spring(280, 120, velocity);
 }

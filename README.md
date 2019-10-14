@@ -27,6 +27,21 @@ onPanEnd: (details) {
 }
 ```
 
+## API
+
+We use the same defaults as `react-spring`, so you have the following spring simulations to choose from
+
+- `Haru.normal([double velocity = 0])` ("default" in `react-spring`)
+- `Haru.gentle([double velocity = 0])`
+- `Haru.wobbly([double velocity = 0])`
+- `Haru.stiff([double velocity = 0])`
+- `Haru.slow([double velocity = 0])`
+- `Haru.molasses([double velocity = 0])`
+
+and you can create a conventional simulation with
+
+- `Haru.spring(double stiffness, double damping, [double velocity])`
+
 ## Inspo
 
 `haru` is inspired by [lukepighetti/sprung](https://github.com/lukepighetti/sprung) and [react-spring/react-spring](https://github.com/react-spring/react-spring).
