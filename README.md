@@ -1,6 +1,6 @@
 # Haru — Flutter Spring Simulations
 
-A super simple library for handling SpringSimulations in Flutter, providing conventional defaults and a clean API.
+A super simple SpringSimulation API for Flutter, providing conventional defaults.
 
 ## Usage
 
