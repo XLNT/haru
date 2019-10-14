@@ -8,7 +8,7 @@ SpringDescription _desc(double stiffness, double damping) =>
 SpringSimulation _spring(double stiffness, double damping, [double velocity = 0]) =>
     SpringSimulation(_desc(stiffness, damping), 0.0, 1.0, velocity);
 
-class Haru {
+class Harusaki {
   /// Builds a [SpringSimulation] using the default [SpringDescription]
   static SpringSimulation spring(double stiffness, double damping, [double velocity = 0]) =>
       _spring(stiffness, damping, velocity);

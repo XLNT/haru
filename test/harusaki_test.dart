@@ -1,15 +1,15 @@
-import 'package:haru/haru.dart';
+import 'package:harusaki/harusaki.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Haru', () {
+  group('harusaki', () {
     test('produces a normal spring simulation', () {
-      expect(Haru.normal(), isNotNull);
+      expect(Harusaki.normal(), isNotNull);
     });
 
     test('handles velocity', () {
-      final slow = Haru.normal();
-      final fast = Haru.normal(10);
+      final slow = Harusaki.normal();
+      final fast = Harusaki.normal(10);
 
       // initial velocity should be greater
       expect(fast.dx(0), greaterThan(slow.dx(0)));

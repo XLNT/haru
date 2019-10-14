@@ -1,7 +1,7 @@
-name: haru
-description: Spring Descriptions
+name: harusaki
+description: Conventional SpringSimulations
 version: 0.0.2
-homepage: https://github.com/XLNT/haru
+homepage: https://github.com/XLNT/harusaki
 author: Matt Condon (shrugs) <matt@bydot.app>
 
 environment:
