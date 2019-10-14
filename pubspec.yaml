@@ -1,6 +1,7 @@
 name: haru
 description: Spring Descriptions
-version: 1.0.0
+version: 0.0.1
+homepage: https://github.com/XLNT/haru
 author: Matt Condon (shrugs) <matt@bydot.app>
 
 environment:
