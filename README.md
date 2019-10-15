@@ -11,19 +11,29 @@ final controller = AnimationController(/* ... */)
 
 /// 1) just animate with the simulation...
 
-controller.animateWith(Harusaki.normal())
+controller.animateWith(
+  Harusaki.spring(
+    Harusaki.normal.
+    from: 0.0,
+    to: 1.0,
+  ),
+);
 
 /// 2) or grab a velocity value to animate with:
 
-onPanEnd: (details) {
-  final pps = details.velocity.pixelsPerSecond;
-  final size = MediaQuery.of(context).size;
+onDragEnd: (details) {
 
-  final ddx = pixelsPerSecond.dx / size.width;
-  final ddy = pixelsPerSecond.dy / size.height;
-  final velocity = Offset(ddx, ddy).distance;
+  // assumes we're dragging something the size of the screen in a vertical direction
+  final velocity = details.primaryVelocity / MediaQuery.of(context).size.height;
 
-  controller.animateWith(Harusaki.normal(velocity));
+  controller.animateWith(
+    Harusaki.spring(
+      Harusaki.normal,
+      from: controller.value,
+      to: 1.0,
+      velocity: velocity,
+    )
+  );
 }
 ```
 
@@ -31,16 +41,20 @@ onPanEnd: (details) {
 
 We use the same defaults as `react-spring`, so you have the following spring simulations to choose from
 
-- `Harusaki.normal([double velocity = 0])` ("default" in `react-spring`)
-- `Harusaki.gentle([double velocity = 0])`
-- `Harusaki.wobbly([double velocity = 0])`
-- `Harusaki.stiff([double velocity = 0])`
-- `Harusaki.slow([double velocity = 0])`
-- `Harusaki.molasses([double velocity = 0])`
+- `SpringDescription Harusaki.normal([double velocity = 0])` ("default" in `react-spring`)
+- `SpringDescription Harusaki.gentle([double velocity = 0])`
+- `SpringDescription Harusaki.wobbly([double velocity = 0])`
+- `SpringDescription Harusaki.stiff([double velocity = 0])`
+- `SpringDescription Harusaki.slow([double velocity = 0])`
+- `SpringDescription Harusaki.molasses([double velocity = 0])`
 
 and you can create a conventional simulation with
 
-- `Harusaki.spring(double stiffness, double damping, [double velocity])`
+- `SpringSimulation Harusaki.spring(double stiffness, double damping, [double velocity])`
+
+and get the default tolerance with
+
+- `Tolerance Harusaki.tolerance`
 
 ## Inspo
 
@@ -51,3 +65,7 @@ The `haru` packagename was already taken, so we'll go with "the beginning of spr
 ## Notes
 
 As far as I can tell, `stiffness` and `tension` are the same concept and `damping` and `friction` are the same concept.
+
+I've implemented a `HarusakiAnimationController` that replaces all of the normal linear animations with spring-based simulations. Since it conforms to `AnimationController`, it can be passed to any widgets that expect one. Then when those widgets call `.forward` or `.reverse` or `.fling`, it'll use the spring description you've provided to animate the value, rather than the default linear interpolation.
+
+I haven't decided if this is useful or not yet.
