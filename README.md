@@ -47,3 +47,7 @@ and you can create a conventional simulation with
 `harusaki` is inspired by [lukepighetti/sprung](https://github.com/lukepighetti/sprung) and [react-spring/react-spring](https://github.com/react-spring/react-spring).
 
 The `haru` packagename was already taken, so we'll go with "the beginning of spring" as a motif ¯\\\_(ツ)_/¯
+
+## Notes
+
+As far as I can tell, `stiffness` and `tension` are the same concept and `damping` and `friction` are the same concept.
